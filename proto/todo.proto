@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package todo 
+
+service TodoService {
+    rpc Create (TodoData) returns new(Todo) {}
+    rpc GetTodo (TodoId) returns (TodoResponse)  {}
+}
