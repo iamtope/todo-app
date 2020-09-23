@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package todo; 
+
+service TodoService {
+    rpc Create (TodoData) returns (Todo) {}
+    rpc GetTodo (TodoId) returns (TodoResponse)  {}
+};
+
+message TodoId {
+    string id = 1;
+};
+
+message TodoResponse {
+    string id = 1;
+    string createdAt = 2;
+    string updatedAt = 3;
+};
+
+message TodoData {
+    string todo =  1;
+};
+
+message Todo {
+    string id = 1;
+    string todo = 2; 
+
+}
