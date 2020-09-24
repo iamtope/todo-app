@@ -5,16 +5,19 @@ package todo;
 service TodoService {
     rpc Create (TodoData) returns (Todo) {}
     rpc GetTodo (TodoId) returns (TodoResponse)  {}
+    rpc EditTodo (Edit) returns (TodoResponse);
+    rpc DeleteTodo (TodoId) returns (Delete);
 };
 
 message TodoId {
-    string id = 1;
+    string todoId = 1;
 };
 
 message TodoResponse {
     string id = 1;
     string createdAt = 2;
     string updatedAt = 3;
+    string text = 4;
 };
 
 message TodoData {
@@ -24,5 +27,13 @@ message TodoData {
 message Todo {
     string id = 1;
     string todo = 2; 
+}
 
+message Edit {
+    string todoId = 1;
+    string todo = 2;
+};
+
+message Delete {
+    string message = 1;
 }

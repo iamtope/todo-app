@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-server": "nodemon -r esm .",
-    "start-client": "nodemon -r esm ./client/app"
+    "start-client": "nodemon -r esm app.js"
   },
   "author": "Abass Adamo",
   "license": "ISC",

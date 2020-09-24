@@ -10,13 +10,57 @@ app.post("/todo", (req, res) => {
     err
       ? res.status(500).json({
           status: "fail",
-          message: "It went wrong for you"
+          message: "It went wrong for you",
         })
       : res.status(200).json({
           status: "success",
-          data: todo
+          data: todo,
         })
   );
+});
+
+app.get("/todo/:todoId", (req, res) => {
+  client.GetTodo({ todoId: req.params.todoId }, (err, todo) => {
+    err
+      ? res.status(500).json({
+          status: "fail",
+          message: "It went wrong for you",
+        })
+      : res.status(200).json({
+          status: "success",
+          data: todo,
+        });
+  });
+});
+
+app.patch("/todo/:todoId", (req, res) => {
+  client.EditTodo(
+    { todoId: req.params.todoId, todo: req.body.text },
+    (err, todo) => {
+      err
+        ? res.status(500).json({
+            status: "fail",
+            message: "It went wrong for you",
+          })
+        : res.status(200).json({
+            status: "success",
+            data: todo,
+          });
+    }
+  );
+});
+
+app.delete("/todo/:todoId", (req, res) => {
+  client.DeleteTodo({ todoId: req.params.todoId }, (err) => {
+    err
+      ? res.status(500).json({
+          status: "fail",
+          message: "It went wrong for you",
+        })
+      : res.status(200).json({
+          status: "success",
+        });
+  });
 });
 
 app.listen(4500, () => {
